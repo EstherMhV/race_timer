@@ -3,10 +3,19 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+const mongoose = require("mongoose")
+mongoose.connect('mongodb://0.0.0.0:27017/raceTimer');
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+app.use(express.urlencoded());
+app.use(express.json());
+
+const userRoute = require('./routes/userRoute');
+app.use('/users', userRoute);
+
+const timerRoute = require('./routes/timerRoute');
+app.use('/timers', timerRoute);
+
+
+app.listen(port);
+
+

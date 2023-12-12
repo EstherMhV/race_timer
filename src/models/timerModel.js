@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 let timerSchema = new Schema({
     user_id: {
-        type: String,
+        type: Number,
         required: true,
         unique: true,
     },
-    time: {
-        type: Float,
+    timer: {
+        type: Number,
         required: true,
     },
 });

@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 
 
-exports.userRegister = async (req, res) => {
+exports.register = async (req, res) => {
     try {
         let newUser = new User(req.body);
         let user = await newUser.save();
@@ -23,10 +23,8 @@ exports.login = async (req, res) => {
             const userData = {
                 id: user._id,
                 email: user.email,
-                role: "admin"
+                role: "user"
             };
-            const token = await jwt.sign(userData, process.env.JWT_KEY, { expiresIn: "10h" });
-            res.status(200).json({ token });
         } else {
             res.status(401).json({ message: "mdp incorrect" });
         }
