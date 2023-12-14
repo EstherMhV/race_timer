@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = 3000
@@ -14,7 +14,6 @@ app.use('/users', userRoute);
 
 const timerRoute = require('./routes/timerRoute');
 app.use('/timers', timerRoute);
-
 
 app.listen(port);
 
